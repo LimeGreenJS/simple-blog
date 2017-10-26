@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import App from './App';
+
 const render = () => {
-  const App = require('./App').default;
   ReactDOM.render(<App />, document.getElementById('app'));
 };
 render();
