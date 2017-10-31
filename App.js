@@ -1,5 +1,6 @@
 import React from 'react';
-import ApolloClient, { HttpLink } from 'apollo-client-preset';
+import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
 import { ApolloProvider } from 'react-apollo';
 
 import ArticleList from './ArticleList';
