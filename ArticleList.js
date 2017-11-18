@@ -25,7 +25,7 @@ const ArticleItem = ({ article }) => (
 
 const ArticleList = ({ data: { loading, error, allArticles } }) => (
   loading ? <p>Loading...</p> :
-  error ? <p>Error: {error}</p> : (
+  error ? <p>Error: {error.message}</p> : (
     <ul style={{ listStyleType: 'none', padding: 0 }}>
       {allArticles.map(article => <ArticleItem key={article.id} article={article} />)}
     </ul>
