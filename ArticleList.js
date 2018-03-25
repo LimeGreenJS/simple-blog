@@ -50,4 +50,4 @@ const ArticleList = () => (
   </Query>
 );
 
-export ArticleList;
+export default ArticleList;
