@@ -42,9 +42,10 @@ const ArticleList = () => (
     {({ loading, error, data }) => (
       loading ? <p>Loading...</p> :
       error ? <p>Error: {error.message}</p> : (
-      <ul style={{ listStyleType: 'none', padding: 0 }}>
-        {data.allArticles.map(article => <ArticleItem key={article.id} article={article} />)}
-      </ul>
+        <ul style={{ listStyleType: 'none', padding: 0 }}>
+          {data.allArticles.map(article => <ArticleItem key={article.id} article={article} />)}
+        </ul>
+      )
     )}
   </Query>
 );
