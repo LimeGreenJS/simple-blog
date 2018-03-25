@@ -1,6 +1,6 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
+import { Query } from 'react-apollo';
 
 const ArticleItem = ({ article }) => (
   <li style={{ borderTop: '1px solid gray', width: 600 }}>
@@ -23,15 +23,6 @@ const ArticleItem = ({ article }) => (
   </li>
 );
 
-const ArticleList = ({ data: { loading, error, allArticles } }) => (
-  loading ? <p>Loading...</p> :
-  error ? <p>Error: {error.message}</p> : (
-    <ul style={{ listStyleType: 'none', padding: 0 }}>
-      {allArticles.map(article => <ArticleItem key={article.id} article={article} />)}
-    </ul>
-  )
-);
-
 const query = gql`
 {
   allArticles(orderBy: date_ASC) {
@@ -46,4 +37,16 @@ const query = gql`
 }
 `;
 
-export default graphql(query)(ArticleList);
+const ArticleList = () => (
+  <Query query={query}>
+    {({ loading, error, data }) => (
+      loading ? <p>Loading...</p> :
+      error ? <p>Error: {error.message}</p> : (
+      <ul style={{ listStyleType: 'none', padding: 0 }}>
+        {data.allArticles.map(article => <ArticleItem key={article.id} article={article} />)}
+      </ul>
+    )}
+  </Query>
+);
+
+export ArticleList;
